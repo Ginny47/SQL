@@ -1,0 +1,52 @@
+SQL Schema
+Table: Tweets
+
++----------------+---------+
+| Column Name    | Type    |
++----------------+---------+
+| tweet_id       | int     |
+| content        | varchar |
++----------------+---------+
+tweet_id is the primary key for this table.
+This table contains all the tweets in a social media app.
+ 
+
+Write an SQL query to find the IDs of the invalid tweets. The tweet is invalid if the number of characters used in the content of the tweet is strictly greater than 15.
+
+Return the result table in any order.
+
+The query result format is in the following example:
+
+ 
+
+Tweets table:
++----------+----------------------------------+
+| tweet_id | content                          |
++----------+----------------------------------+
+| 1        | Vote for Biden                   |
+| 2        | Let us make America great again! |
++----------+----------------------------------+
+
+Result table:
++----------+
+| tweet_id |
++----------+
+| 2        |
++----------+
+Tweet 1 has length = 14. It is a valid tweet.
+Tweet 2 has length = 32. It is an invalid tweet.
+
+# Write your MySQL query statement below
+select tweet_id
+from Tweets
+where char_length(content) >15
+
+
+LENGTH() returns the length of the string measured in bytes.
+CHAR_LENGTH() returns the length of the string measured in characters.
+This is especially relevant for Unicode, in which most characters are encoded in two bytes, or UTF-8, where the number of bytes varies.
+
+Example:
+
+SELECT LENGTH('€')  # is equal to 3
+SELECT CHAR_LENGTH('€') # is equal to 1
