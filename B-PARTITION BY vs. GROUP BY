@@ -1,0 +1,26 @@
+https://www.sqltutorial.org/sql-window-functions/sql-partition-by/
+
+*PARTITION BY clause: divides the result set into partitions and include the calculated window function. PARTITION BY clause does NOT reduce the # of rows returned.
+ex)
+SELECT 
+    first_name,
+    last_name,
+    department_id, 
+    ROUND(AVG(salary) OVER (
+        PARTITION BY department_id
+    )) avg_department_salary
+FROM
+    employees;
+    
+
+*GROUP BY clause: this clause helps calculating SUM or AVERAGE for each group. GROUP BY clause reduce the # of rows returned. 
+ex) 
+SELECT 
+    department_id, 
+    ROUND(AVG(salary)) avg_department_salary
+FROM
+    employees
+GROUP BY 
+    department_id
+ORDER BY
+    department_id;
