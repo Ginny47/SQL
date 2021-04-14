@@ -47,7 +47,7 @@ from Employee e
 
 OR
 
-select employee_id, count(*) over(partition by team_id) as team_size
-from employee 
-ORDER BY employee_id ASC
+SELECT employee_id, COUNT(team_id) OVER (PARTITION BY team_id) team_size
+FROM Employee
+
 
